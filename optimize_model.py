@@ -1,9 +1,12 @@
 import tensorflow as tf
 import os
 
-#insira seu código aqui
 
-#Crregando o modelo CNN criado 
+
+print(tf.__version__)
+"""
+
+#Carregando o modelo CNN criado 
 model = tf.keras.models.load_model('model.h5')
 
 #Conversor
@@ -19,3 +22,7 @@ with open('model.tflite', 'wb') as f:
     f.write(tflite_modelo)
 
 print('Sucesso conversão')
+"""
+
+
+
