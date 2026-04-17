@@ -14,7 +14,6 @@ converter_model.optimizations = [tf.lite.Optimize.DEFAULT]
 
 tflite_modelo = converter_model.convert()
 
-
 #Salvando os arquivos 
 with open('model.tflite', 'wb') as f:
     f.write(tflite_modelo)
