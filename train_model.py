@@ -66,4 +66,5 @@ history = modelo_CNN.fit(x_train, y_train,
 test_loss, test_acc = modelo_CNN.evaluate(x_test, y_test, verbose=2)
 print(f"Acurácia no teste: {test_acc*100:.2f}%")
 
-modelo_CNN.save('mnist_model.h5')
+#Salvando o modelo 
+modelo_CNN.save('model.h5')

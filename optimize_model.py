@@ -4,7 +4,7 @@ import os
 #insira seu código aqui
 
 #Crregando o modelo CNN criado 
-model = tf.keras.models.load_model('mnist_model.h5')
+model = tf.keras.models.load_model('model.h5')
 
 #Conversor
 converter_model = tf.lite.TFLiteConverter.from_keras_model(model)
