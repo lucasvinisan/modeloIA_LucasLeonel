@@ -88,7 +88,7 @@ Apresentação de Todas as metricas de desempenho das 5 épocas de processamento
 **Acurácia Final:** O modelo atingiu **98.99%** de precisão nos dados de teste.  
 
 
-### 5️⃣ Comentários Adicionais (Opcional)
+### 5️⃣ Comentários Adicionais 
 
 - Dificuldades encontradas, aprendizados e próximos passos: 
 O desafio foi particularmente interessante, pois vai ao encontro em uma das áreas de maior interesse em minha trajetória. Inicialmente, compreender todo o processo de implementação de uma CNN e as nuances do problema exigiu horas de dedicação. No entanto, as ideias foram se ajustando, o projeto fluiu e permitiu avanços consideráveis. Por fim,  um dos principais aprendizados foi consolidar a base teórica e prática de desenvolvimento de redes neurais, área na qual pretendo me aprofundar ainda mais, mantendo o foco em minha evolução na Ciência de Dados. 
