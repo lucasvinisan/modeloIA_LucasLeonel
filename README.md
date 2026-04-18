@@ -1,7 +1,6 @@
 ## 📝 Relatório
 
-👤 Identificação: **Nome Completo: Lucas Vinicius Santos Leonel**
-
+👤 Identificação: **Lucas Vinicius Santos Leonel**
 
 ### 1️⃣ Resumo da Arquitetura do Modelo
 
@@ -12,21 +11,21 @@
 
   - `Carregamento do Dados:` O dataset MINIST é devidido em 60.000 imagens para realização do treinamento e 10.000 imagens para teste. 
   
-  - `Normalização:` Os valores dos pixels variam de 0(Preto total) a 255(branco total) é relizado a normalização para escala (0 - 1)
+  - `Normalização:` Os valores dos pixels variam de 0(Preto absoluto) a 255(branco absoluto). Para realização do treinamento, os valores são normalizados para o intervalo 0 e 1. 
   
-  - `Reshaping:`As imagens são redimensionadas para o formatao (28, 28, 1), onde o 1 representa a cor (tom cinza). 
+  - `Reshaping:`As imagens são redimensionadas para o formato (28, 28, 1), onde 28 X 28 é a resolução em pixels e o valor 1 representa o canal de cor em escala de cinza. 
 
 2. Arquitetura da CNN 
 
 | Camada | Tipo | Função |
 | :---: | :---: | :---: |
-| `Conv2D(32)` | Concolucional | Aplica 32 filtros diferentes para detectar caracteristicas simples |
+| `Conv2D(32)` | Convolucional | Aplica 32 filtros diferentes para detectar caracteristicas simples (Como bordas, contornos e texturas) |
 | `Maxpooling2D` | Subamostragem | Usada para compactar a imagem. Verifica um quadrado 2 X 2 de pixels e mantém o maior valor |
-| `Conv2D(64)` | Concolucional | Aplica 64 filtros para detectar combinações mais complexas |
-| `Maxpooling2D` | Subamostragem | Sefunda redução para evitar overfitting e reduza o processamento |
-| `Flatten` | Planificação | Transforma a matriz 2D em um vetor de 1D para ser "enviado" para rede maior |
-| `Dense (64)` | Totalmente Conectada | Camada intermediária de processamento com a aativação ReLU |
-| `Dense (10)` | Saída | Camada final com ativação Softmar, que gera probabilidades para as 10 classes (os números 0 - 9) |
+| `Conv2D(64)` | Convolucional | Aplica 64 filtros para detectar combinações mais complexas (Ccmo curvas, formas geométricas e padrões de textuta) |
+| `Maxpooling2D` | Subamostragem | Segunda redução para aumentar a eficiência computacional e controlar o overfitting |
+| `Flatten` | Planificação | Transforma a matriz 2D em um vetor de 1D para entrada nas camadas maiores |
+| `Dense (64)` | Totalmente Conectada | Camada de neurônio onde cada entrada se conecta a cada saída. Utiliza a ativação reLU para introduzir a não-linearidade e para aprender padrões complexos |
+| `Dense (10)` | Saída | Camada final com ativação Softmax, que gera as probabilidades de cada imagem pertencer a cada uma das 10 classes (digitos de 0a 9) |
 
 3. Estratégia de Aprendizado 
   
@@ -38,9 +37,9 @@
 
 4. Treinamento:
 
- - `Cinco Épocas:` O modelo utilizado para treinamento é divido em 5 épocas, onde cada época processa todo o conjunto de treinamento e valida o desenpenho com conjunto de teste. Ademais, a perfomace final do algoritmo é medida pela acurácia. 
+  - `Cinco Épocas:` O modelo utilizado para treinamento é divido em 5 épocas. Em cada época, o algoeitom processa o conjunto de dados de treinamento e valida o desempenho com conjunto de teste. A performance final é medida pela acurácia alcançada ao fim do ciclo. 
 
- -`Final:` No final do processo o modelo treinado é salvo com nome `model.h5` para prosseguimento do processo. 
+  - `Final:` No final do processo, o modelo treinado é exportado com o nome `model.h5`, permitindo a implementação dos etapas seguintes. 
 
 
 ### 2️⃣ Bibliotecas e Tecnologias Utilizadas
@@ -63,15 +62,15 @@
 
 1. Técnica Utilizada
 
-  - `Post-Trainig Quantization:` A ténica de Quantização Pós-Treinamento, onde os valores decimais de alta precisão (Float32) são reduzidos para `int8` ou `floats` menores. Isso reduzir de forma considerável o tamanho do arquivo final. Além disso, esse técnica impacta na fforma como dispositivos de sistema embarcados processam cálculos com número inteiros impactando na velocidade de inferência.  
+  - `Post-Trainig Quantization:` A técnica de Quantização Pós-Treinamento no qual os valores decimais de alta precisão (Float32) são reduzidos para formatos menores, como o `int8` ou `floats` . Esse processo reduzir de forma considerável o tamanho do arquivo final e otimiza a forma como os sistemas embarcados processam cálculos, resultando em um ganho considerável na velocidade de inferência.  
 
 2. Processo de Conversão: 
 
-  - `Instanciação do Conversor:` prepara toda aestrutura da rede para o novo formato.  
+  - `Instanciação do Conversor:` Etapa em que o modelo treinado é carregado, preparando toda a estrutura da rede para a tradução do novo formato.  
 
-  - `Aplicação da Otimização:` Usa-se a estratégia `DEFAULT` para busca o melhor equilíbrio entre perda mínima de acurácia e ganha áximo de desenpenho, para que o modelo não perca a sua eficiência. 
+  - `Aplicação da Otimização:` Utiliza a estratégia `DEFAULT` para busca o melhor equilíbrio entre perda mínima de acurácia e ganha máximo de desempenho, para que o modelo não perca a sua eficiência mesmo após a sua otimização. 
 
-  - `Serialização:` Comando `converter.convert()` gera o grafo otimizado que é scrito em um arquivo como `.tflite`
+  - `Serialização:` O comando `converter.convert()` gera o grafo otimizado, que é escrito em um arquivo do tipo `.tflite`, pronto para ser utilizado em dispositivos. 
 
 
 ### 4️⃣ Resultados Obtidos
@@ -89,15 +88,12 @@ Apresentação de Todas as metricas de desempenho das 5 épocas de processamento
 **Acurácia Final:** O modelo atingiu **98.99%** de precisão nos dados de teste.  
 
 
-
 ### 5️⃣ Comentários Adicionais (Opcional)
 
-Utilize este espaço para comentar:
-
-- Dificuldades encontradas, aprendizados e próximos passos:  
-O desafio foi particularmente interessante, pois vai ao encontro de uma das áreas que mais desperta meu interesse. Inicialmente, compreender todo o processo de implementação de uma CNN e entender as nuances do problema exigiu algumas horas de dedicação. Porém, com algunas horas de dedicação o projeto fluiu e consegui obter bons avanços.Por fim,  um dos principais aprendizados foi a base no desenvolvimento de redes neurais, área na qual pretendo me aprofundar ainda mais, mantendo o foco em minha evolução na Ciência de Dados. 
+- Dificuldades encontradas, aprendizados e próximos passos: 
+O desafio foi particularmente interessante, pois vai ao encontro em uma das áreas de maior interesse em minha trajetória. Inicialmente, compreender todo o processo de implementação de uma CNN e as nuances do problema exigiu horas de dedicação. No entanto, as ideias foram se ajustando, o projeto fluiu e permitiu avanços consideráveis. Por fim,  um dos principais aprendizados foi consolidar a base teórica e prática de desenvolvimento de redes neurais, área na qual pretendo me aprofundar ainda mais, mantendo o foco em minha evolução na Ciência de Dados. 
 
 - Limitações do Moldelo:
-Embora o modelo tenha se mostrado eficiência, como visto nas metricas apressentadas no tópico anterior. Um dos princiapis limitações é que o modelo foi desenvolvimento esperando imagens de compirmento 28 X 28 em tons de cinza, onde cad digito tem uma tonalidade mais escura enquanto o fundo é branco. Por conta disso, se uma imagem não estiver com essas cracteristicas isso pode impactar de forma consideravél o desenpenho do modelo. 
+Embora o modelo tenha se mostrado eficiência, conforme as metricas apresentadas anteriormente, a CNN possui algumas limitações. O modelo foi desenvolvido para imagens de dimensões 28 X 28, onde cada digito apresenta uma tonalidade mais escura sobre um fundo branco. Por conta disso, qualquer variação nesse padrão (ruídos, inversão de cores ou resolução diferentes) pode impactar de forma consideravél o desempenho e a precisão do modelo. 
 
 ****
