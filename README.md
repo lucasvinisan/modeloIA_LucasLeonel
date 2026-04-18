@@ -21,30 +21,30 @@
 | :---: | :---: | :---: |
 | `Conv2D(32)` | Convolucional | Aplica 32 filtros diferentes para detectar caracteristicas simples (Como bordas, contornos e texturas) |
 | `Maxpooling2D` | Subamostragem | Usada para compactar a imagem. Verifica um quadrado 2 X 2 de pixels e mantém o maior valor |
-| `Conv2D(64)` | Convolucional | Aplica 64 filtros para detectar combinações mais complexas (Ccmo curvas, formas geométricas e padrões de textuta) |
+| `Conv2D(64)` | Convolucional | Aplica 64 filtros para detectar combinações mais complexas (Ccmo curvas, formas geométricas e padrões de textura) |
 | `Maxpooling2D` | Subamostragem | Segunda redução para aumentar a eficiência computacional e controlar o overfitting |
 | `Flatten` | Planificação | Transforma a matriz 2D em um vetor de 1D para entrada nas camadas maiores |
 | `Dense (64)` | Totalmente Conectada | Camada de neurônio onde cada entrada se conecta a cada saída. Utiliza a ativação reLU para introduzir a não-linearidade e para aprender padrões complexos |
-| `Dense (10)` | Saída | Camada final com ativação Softmax, que gera as probabilidades de cada imagem pertencer a cada uma das 10 classes (digitos de 0a 9) |
+| `Dense (10)` | Saída | Camada final com ativação Softmax, que gera as probabilidades de cada imagem pertencer a cada uma das 10 classes (digitos de 0 a 9) |
 
 3. Estratégia de Aprendizado 
   
-  - `Otimizador adam:` É utilizado para ajustar a taxa de aprendizado dinamicamente
+  - `Otimizador adam:` É utilizado para ajustar a taxa de aprendizado dinamicamente.
   
   - `Loss (Perda):` Aplicado para classificação de multiplas classes onde os rótulos de cada classe é um número inteiro.  
   
-  - `Métricas (Acurácia):`Metrica utilizada para acompanhar o percentual de acerto durante a realização do treinamento. 
+  - `Métricas (Acurácia):` Métrica utilizada para acompanhar o percentual de acerto durante a realização do treinamento. 
 
 4. Treinamento:
 
-  - `Cinco Épocas:` O modelo utilizado para treinamento é divido em 5 épocas. Em cada época, o algoeitom processa o conjunto de dados de treinamento e valida o desempenho com conjunto de teste. A performance final é medida pela acurácia alcançada ao fim do ciclo. 
+  - `Cinco Épocas:` O modelo utilizado para treinamento é divido em 5 épocas. Em cada época, o algoritmo processa o conjunto de dados de treinamento e valida o desempenho com conjunto de teste. A performance final é medida pela acurácia alcançada ao fim do ciclo. 
 
   - `Final:` No final do processo, o modelo treinado é exportado com o nome `model.h5`, permitindo a implementação dos etapas seguintes. 
 
 
 ### 2️⃣ Bibliotecas e Tecnologias Utilizadas
 
-- TensorFlow(v2.11.0) & Keras: Biblioteca utilizada para o desenvolvimento, treinamento e execução dos modelo da CNN. Adiconamente, foi utilizado o keras (Uma interface da biblioteca TensorFlow) para a construção de componentes importantes da CNN.
+- TensorFlow(v2.11.0) & Keras: Biblioteca utilizada para o desenvolvimento, treinamento e execução dos modelo da CNN. Adicionalmente, foi utilizado o keras (Uma interface da biblioteca TensorFlow) para a construção de componentes importantes da CNN.
 
 - Numpy (v1.26.4): Utilizada de forma indireta para normalização e o reshape das imagens. 
 
@@ -62,7 +62,7 @@
 
 1. Técnica Utilizada
 
-  - `Post-Trainig Quantization:` A técnica de Quantização Pós-Treinamento no qual os valores decimais de alta precisão (Float32) são reduzidos para formatos menores, como o `int8` ou `floats` . Esse processo reduzir de forma considerável o tamanho do arquivo final e otimiza a forma como os sistemas embarcados processam cálculos, resultando em um ganho considerável na velocidade de inferência.  
+  - `Post-Training Quantization:` A técnica de Quantização Pós-Treinamento no qual os valores decimais de alta precisão (Float32) são reduzidos para formatos menores, como o `int8` ou `floats`. Este processo reduz de forma considerável o tamanho do arquivo final e otimiza a forma como os sistemas embarcados processam cálculos, resultando em um ganho considerável na velocidade de inferência.  
 
 2. Processo de Conversão: 
 
@@ -94,6 +94,6 @@ Apresentação de Todas as metricas de desempenho das 5 épocas de processamento
 O desafio foi particularmente interessante, pois vai ao encontro em uma das áreas de maior interesse em minha trajetória. Inicialmente, compreender todo o processo de implementação de uma CNN e as nuances do problema exigiu horas de dedicação. No entanto, as ideias foram se ajustando, o projeto fluiu e permitiu avanços consideráveis. Por fim,  um dos principais aprendizados foi consolidar a base teórica e prática de desenvolvimento de redes neurais, área na qual pretendo me aprofundar ainda mais, mantendo o foco em minha evolução na Ciência de Dados. 
 
 - Limitações do Moldelo:
-Embora o modelo tenha se mostrado eficiência, conforme as metricas apresentadas anteriormente, a CNN possui algumas limitações. O modelo foi desenvolvido para imagens de dimensões 28 X 28, onde cada digito apresenta uma tonalidade mais escura sobre um fundo branco. Por conta disso, qualquer variação nesse padrão (ruídos, inversão de cores ou resolução diferentes) pode impactar de forma consideravél o desempenho e a precisão do modelo. 
+Embora o modelo tenha se mostrado eficiente, conforme as metricas apresentadas anteriormente, a CNN possui algumas limitações. O modelo foi desenvolvido para imagens de dimensões 28 X 28, onde cada digito apresenta uma tonalidade mais escura sobre um fundo branco. Por conta disso, qualquer variação nesse padrão (ruídos, inversão de cores ou resolução diferentes) pode impactar de forma considerável o desempenho e a precisão do modelo. 
 
 ****
