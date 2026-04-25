@@ -78,7 +78,7 @@
 
 Apresentação de Todas as metricas de desempenho da implementado na CNN 
 
-![Epocas](img\epocas_treino_teste.jpg)
+![Epocas](img/epocas_treino_teste.jpg)
 
 | Epoch | Acurácia (Treino) | Perda (Treino) | Acurácia (Teste) | Perda (Teste) |
 | :---: | :---: | :---: | :---: | :---: |
@@ -92,13 +92,13 @@ Apresentação de Todas as metricas de desempenho da implementado na CNN
 
 **Gráfico de Acurácia por Epoca**
 
-![Epocas](img\acuracia.jpeg)
+![Acuracia](img/acuracia.jpeg)
 
 A partir da época 1 a linha de treino ultrapsaa a de validação e o gap vai aumentando para as próximas épocas. A partir da época 4 a linha de validação cai um pouco enquando a linha de treino permanece em ascenção. Isso indica que o modelo está se ajustando de mais aos dados de treino (Possível overfitting). Como solução para deixar o modelo mais eficiente seria reduzir o número de época para 3, que foi onde a validação atingiu o seu pico máximo. Porém, o algoritmo ficou com 5 epocas pois está em um limite aceitavel com validação de 98.8%. 
 
 **Loss por época**
 
-![Epocas](img\loss.jpeg)
+![Loss](img/loss.jpeg)
 
 O gráfico com informaçõa de loss por época. Como mostrado 
 
@@ -107,7 +107,7 @@ O modelo de validação mostra-se uma redução até a época 3, mas depois na �
 
 **Matriz de confusão**
 
-![Epocas](img\matriz_confusao.jpeg)
+![Matriz de Confusão](img/matriz_confusao.jpeg)
 
 A diagonal principal está bem definida e os modelo fora delas são valores muito pequenos. 
 
@@ -116,6 +116,12 @@ O digito 5 foi o número com menor valor na diagonal. Ou seja, o modelo teve mai
 Os erros também aaprecem entre os digitos mais paracidos como 6 <-> 0 e 8 <-> 9 e o 9 <-> 4.
 
 O modelo apresenta confução em digitos que tem traços parecidos, o que é de se esperar. 
+
+**Otimização do Modelo**
+
+- model.h5 -> 1.43 MB
+
+- mode.tlite -> 128 KB
 
 
 ### 5️⃣ Comentários Adicionais 
