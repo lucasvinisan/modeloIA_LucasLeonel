@@ -114,15 +114,15 @@ Ademais, o modelo de validação mostra uma redução até a época 3, onde post
 
 ![Matriz de Confusão](img/matriz_confusao.jpeg)
 
-A diagonal principal está bem definida e os valores fora dela são muito pequenos. (O modelo acerta muito e apresenta alguns erros). Além disso, o digito 5 foi o número com menor valor na diagonal com o modelo tendo mais dificuldade para classificá-lo. NOta-se, que os erros de predição apareceram nos digitos 6 e 0, 8, 9 e 9, 4. Por fim, o modelo apresenta essa confução em digitos que tem traços parecidos, o que é de se esperar para um modelo de visão computacional. 
+A diagonal principal está bem definida e os valores fora dela são muito pequenos. (O modelo acerta muito e apresenta alguns erros). Além disso, o digito 5 foi o número com menor valor na diagonal com o modelo tendo mais dificuldade para classificá-lo. NOta-se, que os erros de predição apareceram nos digitos 6 e 0, 8, 9 e 9, 4. Por fim, o modelo apresenta essa confusão em digitos que tem traços parecidos, o que é de se esperar para um modelo de visão computacional. 
 
 **Otimização do Modelo**
 
 O modelo apresentou um redução considerável, onde:
 
-- model.h5 -> 1.43 MB **(Modelo de Treino)**
+- model.h5  ➔ 1.43 MB **(Modelo de Treino)**
 
-- mode.tlite -> 128 KB **(Modelo otimizado)**
+- model.tlite  ➔ 128 KB **(Modelo otimizado)**
 
 
 ### 5️⃣ Comentários Adicionais 
