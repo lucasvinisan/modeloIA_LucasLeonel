@@ -1,6 +1,11 @@
 import tensorflow as tf
+import numpy as np
 from tensorflow import keras
 from tensorflow.keras import layers, datasets
+import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix
+import seaborn as sns
+
 
 #importando o dataset e divindo em Treinamento e teste
 (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data()
@@ -44,5 +49,32 @@ history = modelo_CNN.fit(x_train, y_train,
 test_loss, test_acc = modelo_CNN.evaluate(x_test, y_test, verbose=2)
 print(f"Acurácia no teste: {test_acc*100:.2f}%")
 
+# Gerar predições
+y_pred = modelo_CNN.predict(x_test)
+y_pred_classes = np.argmax(y_pred, axis=1)
+
+# Plotar acurácia
+plt.plot(history.history['accuracy'],     label='Treino')
+plt.plot(history.history['val_accuracy'], label='Validação')
+plt.xlabel('Época'); plt.ylabel('Acurácia')
+plt.legend(); plt.show()
+
+# Plotar loss
+plt.plot(history.history['loss'],     label='Treino')
+plt.plot(history.history['val_loss'], label='Validação')
+plt.xlabel('Época'); plt.ylabel('Loss')
+plt.legend(); plt.show()
+
+
+#PLotando a Matriz de confusão
+cm = confusion_matrix(y_test, y_pred_classes)
+plt.figure(figsize=(10, 8))
+sns.heatmap(cm, annot=True, fmt='d',
+            xticklabels=range(10),
+            yticklabels=range(10))
+plt.xlabel('Predito'); plt.ylabel('Real')
+plt.show()
+
+
 #Salvando o modelo
-#modelo_CNN.save('model.h5')
+modelo_CNN.save('model.h5')
