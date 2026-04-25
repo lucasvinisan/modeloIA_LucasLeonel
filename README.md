@@ -76,25 +76,56 @@
 
 ### 4️⃣ Resultados Obtidos
 
-Apresentação de Todas as metricas de desempenho das 5 épocas de processamento implementado na CNN 
+Apresentação de Todas as metricas de desempenho da implementado na CNN 
+
+![Epocas](img\epocas_treino_teste.jpg)
 
 | Epoch | Acurácia (Treino) | Perda (Treino) | Acurácia (Teste) | Perda (Teste) |
 | :---: | :---: | :---: | :---: | :---: |
-| 1 | 95,43% | 0,1492 | 98,32% | 0,0521 |
-| 2 | 98,49% | 0,0481 | 98,67% | 0,0399 |
-| 3 | 98,97% | 0,0333 | 98,71% | 0,0403 |
-| 4 | 99,22% | 0,0259 | 99,03% | 0,0308 |
-| 5 | **99,44%** | **0,0184** | **98,99%** | **0,0296** |
+| 1 | 95,79% | 0,1398 | 98,41% | 0,0529 |
+| 2 | 98,51% | 0,0488 | 98,35% | 0,0477 |
+| 3 | 98,96% | 0,0335 | 98,73% | 0,0351 |
+| 4 | 99,24% | 0,0254 | 99,04% | 0,0317 |
+| 5 | **99,39%** | **0,0188** | **98,75%** | **0,0431** |
 
-**Acurácia Final:** O modelo atingiu **98.99%** de precisão nos dados de teste.  
+**Acurácia Final:** O modelo atingiu **98.75%** de precisão nos dados de teste.  
+
+**Gráfico de Acurácia por Epoca**
+
+![Epocas](img\acuracia.jpeg)
+
+A partir da época 1 a linha de treino ultrapsaa a de validação e o gap vai aumentando para as próximas épocas. A partir da época 4 a linha de validação cai um pouco enquando a linha de treino permanece em ascenção. Isso indica que o modelo está se ajustando de mais aos dados de treino (Possível overfitting). Como solução para deixar o modelo mais eficiente seria reduzir o número de época para 3, que foi onde a validação atingiu o seu pico máximo. Porém, o algoritmo ficou com 5 epocas pois está em um limite aceitavel com validação de 98.8%. 
+
+**Loss por época**
+
+![Epocas](img\loss.jpeg)
+
+O gráfico com informaçõa de loss por época. Como mostrado 
+
+pelo gráfico o modelo de treino cai de forma considerável. 
+O modelo de validação mostra-se uma redução até a época 3, mas depois na época 4 apresenta aumento. Por conta diss, temos que o treino continua caindo, enquanto a validação começa a subir (Sinal de Overfitting). O modelo está começando a decorar o treino. 
+
+**Matriz de confusão**
+
+![Epocas](img\matriz_confusao.jpeg)
+
+A diagonal principal está bem definida e os modelo fora delas são valores muito pequenos. 
+
+O digito 5 foi o número com menor valor na diagonal. Ou seja, o modelo teve mais dificuldade para acertar o digito. 
+
+Os erros também aaprecem entre os digitos mais paracidos como 6 <-> 0 e 8 <-> 9 e o 9 <-> 4.
+
+O modelo apresenta confução em digitos que tem traços parecidos, o que é de se esperar. 
 
 
 ### 5️⃣ Comentários Adicionais 
 
 - Dificuldades encontradas, aprendizados e próximos passos: 
-O desafio foi particularmente interessante, pois vai ao encontro em uma das áreas de maior interesse em minha trajetória. Inicialmente, compreender todo o processo de implementação de uma CNN e as nuances do problema exigiu horas de dedicação. No entanto, as ideias foram se ajustando, o projeto fluiu e permitiu avanços consideráveis. Por fim,  um dos principais aprendizados foi consolidar a base teórica e prática de desenvolvimento de redes neurais, área na qual pretendo me aprofundar ainda mais, mantendo o foco em minha evolução na Ciência de Dados. 
+
+O desafio foi especialmente relevante por se alinhar a uma das áreas de maior interesse na minha trajetória. Compreender o processo completo de implementação de uma CNN e as nuances do problema exigiu dedicação, mas as ideias foram se acertando progressivamente e o projeto evoluiu. O principal aprendizado foi fortalecer tanto a base teórica quanto a prática no desenvolvimento de redes neurais, área na qual pretendo me aprofundar continuamente, mantendo o foco na minha evolução em Ciência de Dados. 
 
 - Limitações do Moldelo:
-Embora o modelo tenha se mostrado eficiente, conforme as metricas apresentadas anteriormente, a CNN possui algumas limitações. O modelo foi desenvolvido para imagens de dimensões 28 X 28, onde cada digito apresenta uma tonalidade mais escura sobre um fundo branco. Por conta disso, qualquer variação nesse padrão (ruídos, inversão de cores ou resolução diferentes) pode impactar de forma considerável o desempenho e a precisão do modelo. 
+
+Embora o modelo tenha se mostrado eficiente, conforme as metricas apresentadas anteriormente, a CNN possui algumas limitações. Por ter sido treinado com imagens de dimensões 28 X 28, onde cada digito apresenta uma tonalidade mais escura sobre um fundo branco, qualquer variação nesse padrão (ruídos, inversão de cores ou resolução diferentes) pode impactar de forma considerável o desempenho e a precisão do modelo.
 
 ****
