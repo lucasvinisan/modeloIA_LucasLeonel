@@ -100,35 +100,29 @@ Apresentação de Todas as metricas de desempenho da implementado na CNN
 
 ![Acuracia](img/acuracia.jpeg)
 
-A partir da época 1 a linha de treino ultrapassa a linha de validação e o gap vai aumentando para as próximas épocas. A partir da época 4, a linha de validação cai, enquando a linha de treino permanece em ascenção. Isso indica que o modelo está se ajustando de mais aos dados de treino (Possível overfitting). Uma solução seria reduzir o número de época para 3, que foi onde a validação atingiu o seu pico máximo. Porém, o algoritmo ficou com 5 epocas pois está em um limite aceitavel e com validação de 98.8%. 
+Apartir da época 1, a curva de treino ultrapassa a de validação, com o gap aumentando progressivamente. Na época 4, observa-se que a acurácia de validação começa a cair, enquanto a de treino continua em ascensão, o que caracteriza um overfitting (sobreajuste). Uma solução ideal seria interromper o treinamento na época 3, onde a validação atingiu seu ápice. Contudo, eu opteu por manter 5 épocas, pois o modelo permanece em um limite aceitável, apresentando 98,75% de validação.
 
 **Loss por época**
 
 ![Loss](img/loss.jpeg)
 
 O gráfico com informações de loss por época. 
-Como mostrado pelo gráfico, o modelo de treino cai de forma considerável. 
-O modelo de validação mostra uma redução até a época 3, mas seguindo de um aumento na época 4. Por conta disso, temos que o treino continua caindo, enquanto a validação começa a subir (Sinal de Overfitting). O modelo está começando a decorar o treino. 
+Como mostrado pelo gráfico, o modelo de treino apresenta uma queda de forma considerável. 
+Ademais, o modelo de validação mostra uma redução até a época 3, onde posteriormenta apresenta um aumento na época 4. Por conta disso, temos que o treino continua caindo enquanto a validação começa a subir (Overfitting). O modelo está começando a decorar o treino. 
 
 **Matriz de confusão**
 
 ![Matriz de Confusão](img/matriz_confusao.jpeg)
 
-A diagonal principal está bem definida e os valores fora dela são muito pequenos. (O modelo acerta muito e apresenta alguns erros) 
-
-O digito 5 foi o número com menor valor na diagonal. Ou seja, o modelo teve mais dificuldade para acertá-lo. 
-
-Os erros também aparecem entre os digitos mais paracidos como 6 <-> 0 e 8 <-> 9 e o 9 <-> 4.
-
-O modelo apresenta confução em digitos que tem traços parecidos, o que é de se esperar. 
+A diagonal principal está bem definida e os valores fora dela são muito pequenos. (O modelo acerta muito e apresenta alguns erros). Além disso, o digito 5 foi o número com menor valor na diagonal com o modelo tendo mais dificuldade para classificá-lo. NOta-se, que os erros de predição apareceram nos digitos 6 e 0, 8, 9 e 9, 4. Por fim, o modelo apresenta essa confução em digitos que tem traços parecidos, o que é de se esperar para um modelo de visão computacional. 
 
 **Otimização do Modelo**
 
 O modelo apresentou um redução considerável, onde:
 
-- model.h5 -> 1.43 MB **Modelo de Treino**
+- model.h5 -> 1.43 MB **(Modelo de Treino)**
 
-- mode.tlite -> 128 KB **modelo otimizado**
+- mode.tlite -> 128 KB **(Modelo otimizado)**
 
 
 ### 5️⃣ Comentários Adicionais 
