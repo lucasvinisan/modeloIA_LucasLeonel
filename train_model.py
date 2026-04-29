@@ -49,6 +49,9 @@ history = modelo_CNN.fit(x_train, y_train,
 test_loss, test_acc = modelo_CNN.evaluate(x_test, y_test, verbose=2)
 print(f"Acurácia no teste: {test_acc*100:.2f}%")
 
+
+"""
+ ---- Codigos para plotar metricas -------
 # Gerar predições
 y_pred = modelo_CNN.predict(x_test)
 y_pred_classes = np.argmax(y_pred, axis=1)
@@ -75,6 +78,7 @@ sns.heatmap(cm, annot=True, fmt='d',
 plt.xlabel('Predito'); plt.ylabel('Real')
 plt.show()
 
+"""
 
 #Salvando o modelo
 modelo_CNN.save('model.h5')
