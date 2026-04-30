@@ -114,7 +114,7 @@ Ademais, o modelo de validação mostra uma redução até a época 3, onde post
 
 ![Matriz de Confusão](img/matriz_confusao.jpeg)
 
-A diagonal principal está bem definida e os valores fora dela são muito pequenos. (O modelo acerta muito e apresenta alguns erros). Além disso, o digito 5 foi o número com menor valor na diagonal com o modelo tendo mais dificuldade para classificá-lo. NOta-se, que os erros de predição apareceram nos digitos (6 e 0), (8 e 9) e (9 e 4). Por fim, o modelo apresenta essa confusão em digitos que tem traços parecidos, o que é de se esperar para um modelo de visão computacional. 
+A diagonal principal está bem definida e os erros de predições fora dela são pequenos, indicando que o modelo acerta a maioria das predições. Além disso, houve maior dificuldade em classificar os dígitos 8 e 9, com erros observados entre (8 e 7), (8 e 2), (9 e 4) e (9 e 7). Por outro lado, o elevado número de acertos na diagonal principal mostra que a escolha por 5 épocas não impactou negativamente o desempenho. Por fim, o modelo apresenta confusão em dígitos com traços semelhantes, o que é esperado em modelos de visão computacional.
 
 **Otimização do Modelo**
 
