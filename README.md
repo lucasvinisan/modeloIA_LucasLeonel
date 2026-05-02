@@ -7,7 +7,6 @@
 
 `train_model.py`.
 
-
 1. Fluxo de Tratamento de Dados
 
   - `Carregamento do Dados:` O dataset MINIST é devidido em 60.000 imagens para realização do treinamento e 10.000 imagens para teste. 
@@ -69,13 +68,13 @@
 
 1. Técnica Utilizada
 
-  - `Post-Training Quantization:` A técnica de Quantização Pós-Treinamento no qual os valores decimais de alta precisão (Float32) são reduzidos para formatos menores, como o `int8` ou `floats`. Este processo reduz de forma considerável o tamanho do arquivo final e otimiza a forma como os sistemas embarcados processam cálculos, resultando em um ganho considerável na velocidade de inferência.  
+  - `Post-Training Quantization:` A técnica de Quantização Pós-Treinamento na qual os valores decimais de alta precisão `(Float32)` são reduzidos para formatos menores, como o `int8` ou `floats`. Este processo reduz de forma considerável o tamanho do arquivo final e otimiza a forma como os sistemas embarcados processam cálculos, resultando em um ganho considerável na velocidade de inferência.  
 
 2. Processo de Conversão: 
 
-  - `Instanciação do Conversor:` Etapa em que o modelo treinado é carregado, preparando toda a estrutura da rede para a tradução do novo formato.  
+  - `Instanciação do Conversor:` Etapa em que o modelo treinado é carregado, preparando toda a estrutura da rede para a conversão para o novo formato.
 
-  - `Aplicação da Otimização:` Utiliza a estratégia `DEFAULT` para busca o melhor equilíbrio entre perda mínima de acurácia e ganha máximo de desempenho, para que o modelo não perca a sua eficiência mesmo após a sua otimização. 
+  - `Aplicação da Otimização:` Utiliza a estratégia `DEFAULT` para buscar o melhor equilíbrio entre perda mínima de acurácia e ganho máximo de desempenho, para que o modelo não perca a sua eficiência mesmo após a sua otimização. 
 
   - `Serialização:` O comando `converter.convert()` gera o grafo otimizado, que é escrito em um arquivo do tipo `.tflite`, pronto para ser utilizado em dispositivos. 
 
@@ -100,29 +99,29 @@ Apresentação de Todas as metricas de desempenho da implementado na CNN
 
 ![Acuracia](img/acuracia.jpeg)
 
-Apartir da época 1, a curva de treino ultrapassa a de validação, com o gap aumentando progressivamente. Na época 4, observa-se que a acurácia de validação começa a cair, enquanto a de treino continua em ascensão, o que caracteriza um overfitting (sobreajuste). Uma solução ideal seria interromper o treinamento na época 3, onde a validação atingiu seu ápice. Contudo, eu opteu por manter 5 épocas, pois o modelo permanece em um limite aceitável, apresentando 98,75% de validação.
+Apartir da `época 1`, a curva de treino ultrapassa a de validação, com o gap aumentando progressivamente. Na `época 4`, observa-se que a acurácia de validação começa a cair, enquanto a de treino continua em ascensão, o que caracteriza um `overfitting` (sobreajuste). Uma solução ideal seria interromper o treinamento na `época 3`, onde a validação atingiu seu ápice. Contudo, eu opteu por manter `5 épocas`, pois o modelo permanece em um limite aceitável, apresentando 98,75% de validação.
 
 **Loss por época**
 
 ![Loss](img/loss.jpeg)
 
-O gráfico com informações de loss por época. 
-Como mostrado pelo gráfico, o modelo de treino apresenta uma queda de forma considerável. 
-Ademais, o modelo de validação mostra uma redução até a época 3, onde posteriormenta apresenta um aumento na época 4. Por conta disso, temos que o treino continua caindo enquanto a validação começa a subir (Overfitting). O modelo está começando a decorar o treino. 
+
+O gráfico apresenta informações de loss por época. Conforme mostrado. O modelo de validação mostra uma redução até a `época 3`, mas posteriormente apresenta um aumento na `época 4`. Por conta disso, observa-se que o treino continua caindo enquanto a validação começa a subir (overfitting), indicando que o modelo está começando a decorar os dados de treinamento.
 
 **Matriz de confusão**
 
 ![Matriz de Confusão](img/matriz_confusao.jpeg)
 
-A diagonal principal está bem definida e os erros de predições fora dela são pequenos, indicando que o modelo acerta a maioria das predições. Além disso, houve maior dificuldade em classificar os dígitos 8 e 9, com erros observados entre (8 e 7), (8 e 2), (9 e 4) e (9 e 7). Por outro lado, o elevado número de acertos na diagonal principal mostra que a escolha por 5 épocas não impactou negativamente o desempenho. Por fim, o modelo apresenta confusão em dígitos com traços semelhantes, o que é esperado em modelos de visão computacional.
+
+A diagonal principal está bem definida e os erros de predição fora dela são pequenos, indicando que o modelo acerta a maioria das classificações. Além disso, houve maior dificuldade em classificar os dígitos 8 e 9, com erros observados entre `(8 e 7)`, `(8 e 2)`, `(9 e 4)` e `(9 e 7)`. Por outro lado, o elevado número de acertos na diagonal principal mostra que a escolha por `5 épocas` não impactou negativamente o desempenho. Por fim, o modelo apresenta confusão entre dígitos com traços semelhantes, o que é esperado em modelos de visão computacional.
 
 **Otimização do Modelo**
 
 O modelo apresentou um redução considerável, onde:
 
-- model.h5  ➔ 1.43 MB **(Modelo de Treino)**
+  - `model.h5`  ➔ 1.43 MB **(Modelo de Treino)**
 
-- model.tlite  ➔ 128 KB **(Modelo otimizado)**
+  - `model.tlite`  ➔ 128 KB **(Modelo otimizado)**
 
 
 ### 5️⃣ Comentários Adicionais 
